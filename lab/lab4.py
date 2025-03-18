@@ -22,7 +22,7 @@ def mxcov_grd(cities, p, nhood_dict):
     opened = 0
     
     sorted_cities = sorted(cities, key = lambda city:len(nhood_dict[city]), reverse=True)
-        
+    
     while opened < p:
         facility = sorted_cities[opened]  #max(cities, key=lambda city: len(nhood_dict[city]))
         

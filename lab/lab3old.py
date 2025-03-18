@@ -3,21 +3,21 @@ import math
 
 def completition_time(processes):
     completition = []
-    for i in processes:
+    for i in range(len(processes)):
         process = 0
-        for j in range(i):
+        for j in range(i + 1):
             process += processes[j]
         completition.append(process)
     return completition
 
-print(completition_time([1,2,3,4]))
+#print(completition_time([3,3,4,4,5,1]))
     
-print(permutations([1,2,3,4]))
+#print(permutations([1,2,3,4]))
 
 myorder = permutations([0,1,2,3,4,5])
 
 def tardiness(process, due):
-    myorder = process
+    myorder = process.copy()
     i = 0
     while i < len(process):
         myorder[i] = i
@@ -35,11 +35,11 @@ def tardiness(process, due):
         mycompletition = completition_time(myprocess)
         tardiness = 0
         for k in orders:
+            #print(k)
             if mycompletition[k] <= mydue[k]:
                 tardiness += 0
             else:
-                tardiness += mycompletition[k] - mydue[k]
-        print(tardiness)
+                tardiness += (mycompletition[k] - mydue[k])
         if tardiness < mintardiness:
             mintardiness = tardiness
             minorder = orders
